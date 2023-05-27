@@ -1,0 +1,29 @@
+{
+    "title": "Advanced Quiz",
+    "questions": [
+      {
+        "type": "multi-selection",
+        "text": "Which of the following are fruits?",
+        "answers": ["Apple", "Carrot", "Banana", "Cherry"],
+        "correctAnswers": [0, 2]
+      },
+      {
+        "type": "true-false",
+        "text": "The Earth revolves around the Sun",
+        "correctAnswer": true
+      },
+      {
+        "type": "matching",
+        "text": "Match the capital cities to their countries",
+        "items": ["France", "Germany", "Italy"],
+        "matches": ["Paris", "Berlin", "Rome"],
+        "correctPairs": { "France": "Paris", "Germany": "Berlin", "Italy": "Rome" }
+      },
+      {
+        "type": "free-input",
+        "text": "What is the square root of 81?",
+        "correctAnswer": 9
+      }
+    ]
+  }
+  

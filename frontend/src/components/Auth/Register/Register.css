@@ -1,0 +1,10 @@
+.Register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.Form {
+  width: 300px;
+}
