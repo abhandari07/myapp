@@ -17,8 +17,9 @@ router.post('/users/login', (UserController.loginUser));
 
 // Quiz Routes
 router.post('/quizzes', authenticate, (QuizController.createQuiz));
-router.get('/quizzes', (QuizController.getQuizzes));
-router.get('/quizzes/:id', (QuizController.getQuiz));
+router.get('/quizzes/getAllQuizOfUser',authenticate, (QuizController.getAllQuizOfUser));
+router.get('/quizzes/getQuizById/:quizId', authenticate, (QuizController.getQuizById));
+router.post('/quizzes/updateQuiz/:id', authenticate, (QuizController.updateQuiz));
 router.put('/quizzes/:id', authenticate, (QuizController.updateQuiz));
 router.delete('/quizzes/:id', authenticate, (QuizController.deleteQuiz));
 

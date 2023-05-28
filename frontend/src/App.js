@@ -27,6 +27,7 @@ function App() {
     localStorage.removeItem('username');
     setUsername("");
     setAuthenticated(false);
+    
   };
 
   return (

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {Button, Nav, Navbar } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 
 const NavBar = ({ authenticated, username, onLogout }) => {
   return (
@@ -9,20 +7,7 @@ const NavBar = ({ authenticated, username, onLogout }) => {
       <Navbar.Brand href="/">Quiz Platform</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/contact">Contact</Nav.Link>
-          {!authenticated ? (
-            <>
-
-            </> 
-          ) : (
-            <>
-              <Nav.Link href="/register">My Quizzes</Nav.Link>
-            </>
-          )}
-        </Nav>
-        <Nav>
+        <Nav> 
           {!authenticated ? (
             <>
               <Nav.Link href="/register">Register</Nav.Link>
@@ -30,6 +15,7 @@ const NavBar = ({ authenticated, username, onLogout }) => {
             </>
           ) : (
             <>
+              <Nav.Link href="/myquiz">My Quiz</Nav.Link>
               <Nav.Link href="/profile">{username}</Nav.Link>
               <Button variant="outline-primary" onClick={onLogout}>Logout</Button>
             </>

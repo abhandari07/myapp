@@ -1,0 +1,26 @@
+/* CreateQuiz.css */
+
+.form-control-create-quiz {
+  margin: 1rem;
+  width: 50% !important;
+}
+
+.select-empty {
+  margin-top: 2rem;
+}
+
+.question-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.option-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+}

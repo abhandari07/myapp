@@ -46,3 +46,20 @@ export const registerUser = async (userData) => {
 export const loginUser = async (userData) => {
   return await api.post('/users/login', userData);
 };
+
+export const getAllQuizOfUser = async () => {
+  return await api.get('/quizzes/getAllQuizOfUser');
+};
+
+
+export const getQuizById = async (id) => {
+  return await api.get(`/quizzes/getQuizById/${id}`);
+};
+
+export const createQuiz = async (quiz) => {
+  return await api.post('/quizzes', quiz);
+};
+
+export const updateQuiz = async (quizId, quiz) => {
+  return await api.post(`/quizzes/updateQuiz/${quizId}`, quiz);
+};

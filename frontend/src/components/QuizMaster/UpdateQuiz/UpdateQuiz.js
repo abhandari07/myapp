@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
-import { Button, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel } from '@material-ui/core';
-import './CreateQuiz.css';
-import { createQuiz } from '../../../api';
-import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect } from 'react';
+import {Button, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel } from '@material-ui/core';
 import { Alert } from "react-bootstrap";
+import './UpdateQuiz.css';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { getQuizById, updateQuiz } from '../../../api';
 
-const CreateQuiz = () => {
-  const [quiz, setQuiz] = useState({ title: '', description: '', access_code: '', questions: [{ question_text: '', type: '', time_limit: '', options: [{ option_text: '', is_correct: false }] }] });
-  const navigate = useNavigate();
+const UpdateQuiz = () => {
+  const { quizId } = useParams();
+  const [quiz, setQuiz] = useState({ title: '', description: '', access_code: '', questions: [] });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadQuiz = async () => {
+      const response = await getQuizById(quizId);
+      setQuiz(response.data);
+    };
+    loadQuiz();
+  }, [quizId]);
 
   const handleQuizChange = (event) => {
     setQuiz({ ...quiz, [event.target.name]: event.target.value });
   };
 
+  
   const handleQuestionChange = (index, event) => {
     const newQuestions = [...quiz.questions];
     newQuestions[index][event.target.name] = event.target.value;
     setQuiz({ ...quiz, questions: newQuestions });
   };
 
-  
   const handleOptionChange = (questionIndex, optionIndex, event) => {
     const newQuestions = [...quiz.questions];
     if (event.target.name === 'is_correct') {
@@ -45,13 +55,11 @@ const CreateQuiz = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await createQuiz({
-        quiz
-      })
-      setSuccessMessage("Quiz Created Successfully");
+      await updateQuiz(quizId, quiz);
+      setSuccessMessage("Quiz Update Successfully");
       setTimeout(() => {
         navigate("/myquiz");
-      }, 2000);
+      }, 1500);
     } catch (error) {
       console.error(error);
       if (error.response && error.response.data) {
@@ -63,7 +71,8 @@ const CreateQuiz = () => {
   };
 
   return (
-    <form className="form-control-create-quiz" onSubmit={handleSubmit}>
+    <form className="form-control" onSubmit={handleSubmit}>
+       
       <TextField label="Title" name="title" value={quiz.title} onChange={handleQuizChange} fullWidth />
       <TextField label="Description" name="description" value={quiz.description} onChange={handleQuizChange} fullWidth />
       <TextField label="Access Code" name="access_code" value={quiz.access_code} onChange={handleQuizChange} fullWidth />
@@ -91,11 +100,11 @@ const CreateQuiz = () => {
       ))}
       <Button variant="contained" color="primary" onClick={handleAddQuestion}>Add Question</Button>
       &nbsp;
-      <Button variant="contained" color="secondary" type="submit">Create Quiz</Button>
+      <Button variant="contained" color="secondary" type="submit">Update Quiz</Button>
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
     </form>
   );
 }
 
-export default CreateQuiz;
+export default UpdateQuiz;

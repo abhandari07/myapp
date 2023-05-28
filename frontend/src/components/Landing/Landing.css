@@ -1,10 +1,17 @@
 .Landing {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  height: 20vh;
 }
 
 .Jumbotron {
   text-align: center;
+}
+
+.joinQuiz{
+  border:2px solid black; 
+}
+
+.joinSection{
+  padding-top: 20px;
 }

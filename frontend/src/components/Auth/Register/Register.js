@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Alert} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
-import { registerUser } from '../../../api'; // Import the API call
+import { registerUser } from '../../../api'; 
 
 
 const Register = () => {

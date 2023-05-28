@@ -1,8 +1,8 @@
 module.exports = {
     development: {
-      username: 'root',
-      password: 'Memoir-t929',
-      database: 'quiz_platform',
+      username: 'quizapp',
+      password: 'quizapp137##N',
+      database: 'quizapp',
       host: '127.0.0.1',
       dialect: 'mysql',
     },
